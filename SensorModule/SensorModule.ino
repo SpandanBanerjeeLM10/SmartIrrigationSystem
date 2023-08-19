@@ -10,6 +10,8 @@ String command;
 #define sensor1 A0
 #define sensor2 A1
 
+const int pumpPin = 8;
+
 DHT dht(DHTPIN, DHTTYPE);
 
 void setup() {
@@ -22,19 +24,23 @@ void setup() {
 void loop() {
   //read sensor 1
   int sensor1Value = analogRead(sensor1);
-  Serial.print("Sensor 1: ");
-  Serial.println(sensor1Value);
-  
+     
   //read sensor 2
   int sensor2Value = analogRead(sensor2);
-  Serial.print("Sensor 2: ");
-  Serial.println(sensor2Value);
+  
+  //Calc the average
+  int avgSensorValue = (sensor1Value + sensor2Value)/2;
+
+  Serial.println("Average Moisture Content = " + String(avgSensorValue));
+ 
   
   Serial.println();
 
   Serial.println("Temperature = " + String(dht.readTemperature())+" °C");
   Serial.println("Humidity = " + String(dht.readHumidity())+" %");
 
+
+  
   delay(3000);
 
 }
