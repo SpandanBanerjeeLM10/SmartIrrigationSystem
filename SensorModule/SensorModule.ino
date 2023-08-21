@@ -32,13 +32,8 @@ void loop() {
   int avgSensorValue = (sensor1Value + sensor2Value)/2;
 
   Serial.println("Average Moisture Content = " + String(avgSensorValue));
- 
-  
-  Serial.println();
-
   Serial.println("Temperature = " + String(dht.readTemperature())+" °C");
   Serial.println("Humidity = " + String(dht.readHumidity())+" %");
-
 
   
   delay(3000);

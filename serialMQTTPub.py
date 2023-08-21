@@ -15,11 +15,11 @@ def main():
     while True:
         if ser.in_waiting > 0:
             line = ser.readline().decode('utf-8').rstrip()
-            print(f"Read from serial: {line}")
+            #print(f"Read from serial: {line}")
             client.publish('topic/sensorModule', payload=line, qos=0, retain=False)
             print(f"Published to topic/sensorModule: {line}")
             print("\n")
-            print("\n")
+
 
 if __name__ == '__main__':
     main()

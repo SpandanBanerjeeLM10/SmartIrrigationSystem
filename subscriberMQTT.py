@@ -18,7 +18,7 @@ def extract_value(line):
 
 def on_message(client, userdata, msg):
     payload = msg.payload.decode('utf-8')
-    print(f"{msg.topic} {payload}")
+   # print(f"{msg.topic} {payload}")
 
     if "Temperature" in payload:
         temperature = extract_value(payload)
@@ -32,9 +32,11 @@ def on_message(client, userdata, msg):
         if avg_moisture > 450:
             print("Starting water pump")
             GPIO.output(PUMP_PIN, GPIO.HIGH)
+            print("\n")
         elif avg_moisture <= 380:
             print("Stopping water pump")
             GPIO.output(PUMP_PIN, GPIO.LOW)
+            print("\n")
 
 
 client = mqtt.Client()
